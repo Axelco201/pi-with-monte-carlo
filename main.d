@@ -18,9 +18,7 @@ void main(){
 	int i = 0;
 	while(i <= limite){
 		double x = uniform(-1.0, 1.0, rnd);
-		//writeln(x);
 		double y = uniform(-1.0, 1.0, rnd);
-		//writeln(y);
 
 		nbPoint++;
 
