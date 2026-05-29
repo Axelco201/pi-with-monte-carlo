@@ -7,9 +7,7 @@ auto inCircle(double x, double y){
 	if( sqrt(x*x + y*y) <= 1){
 		return true;
 	}
-	else{
-		return false;
-	}
+	return false;
 }
 
 void main(){
