@@ -4,14 +4,14 @@ import std.math;
 
 
 
-auto monteCarloPi(const int limite){
+auto monteCarloPi(const long limite){
 	auto rnd = Random(unpredictableSeed);
 	int nbPoint = 0;
 	int nbPointInCircle = 0;	
 	int i = 0;
 	while(i <= limite){
-		double x = uniform(-1.0, 1.0, rnd);
-		double y = uniform(-1.0, 1.0, rnd);
+		real x = uniform(-1.0, 1.0, rnd);
+		real y = uniform(-1.0, 1.0, rnd);
 
 		nbPoint++;
 
@@ -22,20 +22,20 @@ auto monteCarloPi(const int limite){
 	}
 
 	writeln("nbPointInCircle : ", nbPointInCircle, "\nnbPoint : ", nbPoint, "\nPI = ", (nbPointInCircle/float(nbPoint))*4.0 );
-	return (nbPointInCircle/float(nbPoint))*4.0;
+	return (nbPointInCircle/real(nbPoint))*4.0;
 }
 
-auto Moyenne(double[] liste, int nbValeur){
+auto Moyenne(real[] liste, int nbValeur){
 	int b = 0;
-	double PiMoyenne = 0;
+	real PiMoyenne = 0;
 	while(b <= nbValeur){
 		PiMoyenne += liste[b];
 		b++;
 	}
-	return PiMoyenne/double(nbValeur+1);
+	return PiMoyenne/real(nbValeur+1);
 }
 
-auto EcartType(double[] liste, int nbValeur, double moyenne){
+auto EcartType(real[] liste, int nbValeur, real moyenne){
 	int c = 0;
 	double ecartType = 0;
 	while(c <= nbValeur){
@@ -47,9 +47,9 @@ auto EcartType(double[] liste, int nbValeur, double moyenne){
 }
 
 void main(){
-	int limite;
+	long limite;
 	int nbPiEstimation;
-	double[] listPi;
+	real[] listPi;
 	int a = 0;
 
 	readf!" %d"(limite);
@@ -59,8 +59,8 @@ void main(){
 		listPi ~= monteCarloPi(limite);
 		a++;
 	}
-	double moyenne = Moyenne(listPi, nbPiEstimation);
+	real moyenne = Moyenne(listPi, nbPiEstimation);
 	writeln("Moyenne = ", moyenne);
-	double ecartType = EcartType(listPi, nbPiEstimation, moyenne);
+	realp ecartType = EcartType(listPi, nbPiEstimation, moyenne);
 	writeln("ecartType =", ecartType);
 }
