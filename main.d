@@ -10,8 +10,8 @@ auto monteCarloPi(const long limite){
 	int nbPointInCircle = 0;	
 	int i = 0;
 	while(i <= limite){
-		real x = uniform(-1.0, 1.0, rnd);
-		real y = uniform(-1.0, 1.0, rnd);
+		double x = uniform(-1.0, 1.0, rnd);
+		double y = uniform(-1.0, 1.0, rnd);
 
 		nbPoint++;
 
@@ -21,21 +21,21 @@ auto monteCarloPi(const long limite){
 		i++;
 	}
 
-	writeln("nbPointInCircle : ", nbPointInCircle, "\nnbPoint : ", nbPoint, "\nPI = ", (nbPointInCircle/float(nbPoint))*4.0 );
-	return (nbPointInCircle/real(nbPoint))*4.0;
+	writeln("nbPointInCircle : ", nbPointInCircle, "\nnbPoint : ", nbPoint, "\nPI = ", (nbPointInCircle/double(nbPoint))*4.0 );
+	return (nbPointInCircle/double(nbPoint))*4.0;
 }
 
-auto Moyenne(real[] liste, int nbValeur){
+auto Moyenne(double[] liste, int nbValeur){
 	int b = 0;
-	real PiMoyenne = 0;
+	double PiMoyenne = 0;
 	while(b <= nbValeur){
 		PiMoyenne += liste[b];
 		b++;
 	}
-	return PiMoyenne/real(nbValeur+1);
+	return PiMoyenne/double(nbValeur+1);
 }
 
-auto EcartType(real[] liste, int nbValeur, real moyenne){
+auto EcartType(double[] liste, int nbValeur, double moyenne){
 	int c = 0;
 	double ecartType = 0;
 	while(c <= nbValeur){
@@ -49,7 +49,7 @@ auto EcartType(real[] liste, int nbValeur, real moyenne){
 void main(){
 	long limite;
 	int nbPiEstimation;
-	real[] listPi;
+	double[] listPi;
 	int a = 0;
 
 	readf!" %d"(limite);
@@ -59,8 +59,8 @@ void main(){
 		listPi ~= monteCarloPi(limite);
 		a++;
 	}
-	real moyenne = Moyenne(listPi, nbPiEstimation);
+	double moyenne = Moyenne(listPi, nbPiEstimation);
 	writeln("Moyenne = ", moyenne);
-	realp ecartType = EcartType(listPi, nbPiEstimation, moyenne);
+	double ecartType = EcartType(listPi, nbPiEstimation, moyenne);
 	writeln("ecartType =", ecartType);
 }
